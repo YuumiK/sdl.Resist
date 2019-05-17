@@ -57,8 +57,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent event) {
         float omegaZ = event.values[2];  // z-axis angular velocity (rad/sec)
         Z += omegaZ * (int) (event.timestamp - prevTimestamp) / 1000000000;
-        Log.i(TAG, "onSensorChanged: " + omegaZ + "," + Z + "," + (int) (event.timestamp - prevTimestamp));
-        // TODO: calculate right direction that cancels the rotation
         rotationView.setDirection(Z);
         prevTimestamp = event.timestamp;
     }
